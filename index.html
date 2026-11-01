@@ -1,5 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Django Lab R25</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap">
@@ -301,7 +305,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
-
+</head>
+<body>
 <div id="app">
   <header id="titlebar">
     <div class="left">
@@ -846,3 +851,5 @@ if (startHash && history.replaceState) history.replaceState(null, '', startHash)
 if (!routeFromHash()){ const last = store.get('lab:last'); if (last && FILES[last] && last !== 'README.md') openFile(last); }
 })();
 </script>
+</body>
+</html>
