@@ -1,8 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "",
-  "outputDirectory": ".",
-  "framework": null,
   "headers": [
     {
       "source": "/img/(.*)",
