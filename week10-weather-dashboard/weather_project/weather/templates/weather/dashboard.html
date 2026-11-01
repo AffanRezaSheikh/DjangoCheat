@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Weather dashboard</title>
+  <link rel="stylesheet" href="{% static 'weather/styles.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Weather dashboard</h1>
+
+    <form method="post" class="city-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Update</button>
+    </form>
+
+    {% if messages %}
+      <ul class="messages">
+        {% for m in messages %}
+          <li class="{{ m.tags }}">{{ m }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if current %}
+      <section class="current">
+        <h2>Current weather — {{ current.city }}</h2>
+        <div class="current-grid">
+          <div>
+            <p><strong>Temperature:</strong> {{ current.temp_c }} °C</p>
+            <p><strong>Humidity:</strong> {{ current.humidity }} %</p>
+            <p><strong>Wind:</strong> {{ current.wind_speed }} m/s</p>
+            <p><strong>Conditions:</strong> {{ current.description }}</p>
+          </div>
+          <div>
+            <img alt="icon" src="https://openweathermap.org/img/wn/{{ current.icon }}@2x.png">
+          </div>
+        </div>
+      </section>
+    {% endif %}
+
+    <section class="charts">
+      <h2>5-day forecast (3-hour intervals)</h2>
+      <canvas id="forecastTempChart"></canvas>
+      <canvas id="forecastHumidityChart"></canvas>
+
+      <h2>Local historical snapshots (last 30)</h2>
+      <canvas id="historicalTempChart"></canvas>
+      <canvas id="historicalWindChart"></canvas>
+    </section>
+  </main>
+
+  {{ forecast_points|json_script:"forecast-data" }}
+  {{ historical_points|json_script:"historical-data" }}
+  <script src="{% static 'weather/charts.js' %}"></script>
+</body>
+</html>

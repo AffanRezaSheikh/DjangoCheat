@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Manager</title>
+</head>
+<body>
+  <h1>Book Manager</h1>
+  <nav>
+    <a href="{% url 'book_list' %}">Home</a> |
+    <a href="{% url 'book_add' %}">Add Book</a>
+  </nav>
+  <hr>
+  {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!-- added: page for /academics/ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VJIT - Academics</title>
+</head>
+<body>
+  <h1>Departments</h1>
+  <p><a href="/">Home</a></p>
+  <ul>
+    {% for dept in departments %}
+      <li>
+        <strong>{{ dept.name }}</strong> - HOD: {{ dept.hod }}<br>
+        {{ dept.description }}<br>
+        Contact: {{ dept.contact_email }}
+      </li>
+    {% empty %}
+      <li>No departments yet. Add them at /admin/.</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

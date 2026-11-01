@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inbox</title>
+  <link rel="stylesheet" href="{% static 'mail/style.css' %}">
+  <script src="{% static 'mail/script.js' %}"></script>
+</head>
+<body>
+  <h2>Your Inbox</h2>
+
+  <!-- Navigation -->
+  <p>
+    <a href="{% url 'compose' %}">Compose Mail</a> |
+    <a href="{% url 'logout' %}">Logout</a>
+  </p>
+
+  <!-- Inbox List -->
+  <ul>
+    {% for mail in mails %}
+      <li>
+        <b>{{ mail.subject }}</b><br>
+        From: {{ mail.sender }} → To: {{ mail.recipient }}<br>
+        <small>{{ mail.timestamp }}</small><br>
+        <p>{{ mail.body|truncatewords:20 }}</p>
+      </li>
+    {% empty %}
+      <li>No mails yet.</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

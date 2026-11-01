@@ -1,0 +1,17 @@
+body { font-family: system-ui, sans-serif; margin: 0; background: #f7f9fb; color: #2c3e50; }
+
+.container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+
+.city-form { display: flex; gap: 1rem; align-items: flex-end; }
+
+.city-form p { margin: 0; }
+
+.current-grid { display: grid; grid-template-columns: 1fr 120px; gap: 1rem; align-items: center; }
+
+.messages { list-style: none; padding: 0; }
+
+.messages li { margin: .5rem 0; padding: .5rem .75rem; border-radius: 6px; }
+
+.messages li.error { background: #fdecea; color: #c0392b; }
+
+canvas { margin: 1rem 0; background: #fff; border: 1px solid #eaecef; border-radius: 8px; padding: .5rem; }

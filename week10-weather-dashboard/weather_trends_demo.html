@@ -1,0 +1,71 @@
+<!-- From the manual (Step 5): a standalone Chart.js demo with sample data.
+     Open this file directly in a browser to see the "Weather Trends" chart. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Weather Trends</title>
+</head>
+<body>
+  <h2>Weather Trends</h2>
+
+  <canvas id="weatherChart"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // These arrays come from your Django context
+    const labels = ["2026-01-20 18:00", "2026-01-20 19:00", "2026-01-20 20:00"];
+    const tempData = [24.5, 23.8, 22.9];
+    const humidityData = [60, 65, 70];
+    const windData = [3.2, 2.8, 2.5];
+
+    new Chart(document.getElementById('weatherChart'), {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Temperature (°C)',
+            data: tempData,
+            borderColor: 'red',
+            backgroundColor: 'rgba(255,0,0,0.2)',
+            fill: false,
+            tension: 0.3
+          },
+          {
+            label: 'Humidity (%)',
+            data: humidityData,
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0,0,255,0.2)',
+            fill: false,
+            tension: 0.3
+          },
+          {
+            label: 'Wind Speed (m/s)',
+            data: windData,
+            borderColor: 'green',
+            backgroundColor: 'rgba(0,255,0,0.2)',
+            fill: false,
+            tension: 0.3
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          tooltip: { enabled: true }
+        },
+        scales: {
+          x: {
+            title: { display: true, text: 'Timestamp' }
+          },
+          y: {
+            title: { display: true, text: 'Values' }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

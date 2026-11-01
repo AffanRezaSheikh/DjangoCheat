@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Compose Mail</title>
+  <link rel="stylesheet" href="{% static 'mail/style.css' %}">
+  <script src="{% static 'mail/script.js' %}"></script>
+</head>
+<body>
+  <h2>Compose Mail</h2>
+
+  <!-- Navigation -->
+  <p>
+    <a href="{% url 'inbox' %}">Inbox</a> |
+    <a href="{% url 'logout' %}">Logout</a>
+  </p>
+
+  <!-- Compose Form -->
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send Mail</button>
+  </form>
+</body>
+</html>
